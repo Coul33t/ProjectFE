@@ -1,4 +1,4 @@
-# ProjectIso
+# ProjectFE
 
 Command for windows compilation with mingw:
 `cmake .. -G "MingGW Makefiles`
