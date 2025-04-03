@@ -56,29 +56,29 @@ void Map::makeTestMap() {
         for (size_t x = 0; x < this->size.w; x++) {
             // Debug tile
             if (x == 0 && y == 0) 
-                tiles.emplace_back(Tile(("waterfull"), x, y, 0));
+                tiles.emplace_back("waterfull", 16, x, y, 0);
 
             // Debug tile
             else if (x == 1 && y == 0) {
-                tiles.emplace_back(Tile(("stonefull"), x, y, 0));
+                tiles.emplace_back("stonefull", 16, x, y, 0);
             }
 
             else {
                 int z = Random::get_int(-1, 0);
                 if(z >= 0) {
-                    tiles.emplace_back(Tile("grassfull", x, y, z));
+                    tiles.emplace_back("grassfull", 16, x, y, z);
                 }
                 
                 else if (z == -1) {
-                    tiles.emplace_back(Tile("dirtgrassfull", x, y, z));
+                    tiles.emplace_back("dirtgrassfull", 16, x, y, z);
                 }
 
                 else if (z == -2) {
-                    tiles.emplace_back(Tile("dirtfull", x, y, z));
+                    tiles.emplace_back("dirtfull", 16, x, y, z);
                 }
 
                 else if (z == -3) {
-                    tiles.emplace_back(Tile("waterfull", x, y, z));
+                    tiles.emplace_back("waterfull", 16, x, y, z);
                 }
             }
             
@@ -200,7 +200,7 @@ void Map::generateCuteMap() {
 bool Map::adjacentZDiffIsBiggerThan(Tile& tile, int max_level) {
     for (Tile& tile_in_lst: tiles) {
         if (&tile != &tile_in_lst) {
-            if (Tools::dst(tile.get_pos_as_mvec(), tile_in_lst.get_pos_as_mvec()) > 2) {
+            if (Tools::dst(tile.getPosAsMvec2(), tile_in_lst.getPosAsMvec2()) > 2) {
                 if (tile.pos.z - tile_in_lst.pos.z > max_level) {
                     return true;
                 }

@@ -12,8 +12,8 @@ namespace Constants {
     static const int TARGET_FPS = 60;
     static const int TARGET_FRAME_DELAY_MS = 1000 * (1/TARGET_FPS);
 
-    static const int TILE_W = 32;
-    static const int TILE_H = 32;
+    static const int TILE_W = 16;
+    static const int TILE_H = 16;
 
     
 }

@@ -56,7 +56,6 @@ void Engine::saveMapToJSON(const std::string& filename) {
         json tile_array;
         tile_array["tile_idx"] = this->renderer.getTextureIdxFromName(tile.texture_name);
         tile_array["pos"] = {tile.pos.x, tile.pos.y, tile.pos.z};
-        tile_array["fill_under"] = tile.fill_under;
 
         json_file["map"].push_back(tile_array);
     }
@@ -98,7 +97,7 @@ void Engine::dummyLoadEntities() {
 }
 
 void Engine::run() {
-    map.generateCuteMap();
+    map.makeTestMap();
     renderer.loadTileset();
     renderer.assignNameToSprites();
 

@@ -17,34 +17,25 @@
 struct Tile {
     std::string texture_name;
     mVec3<int> pos; // x, y, z
-    bool fill_under;
+    int size;
 
-    Tile() {
-        fill_under = true;
-    }
+    Tile() : pos(mVec3<int>{0, 0, 0}), size(-1) {}
 
-    Tile(std::string name) {
-        texture_name = name;
-        pos.x = 0;
-        pos.y = 0;
-        pos.z = 0;
-        fill_under = true;
-    }
+    explicit Tile(std::string name): texture_name(std::move(name)), pos(mVec3<int>{0, 0, 0}), size(-1) {}
 
-    Tile(std::string name, int x, int y, int z=0) {
-        texture_name = name;
-        pos.x = x;
-        pos.y = y;
-        pos.z = z;
-        fill_under = true;
-    }
+    Tile(std::string name, int size, int x, int y, int z=0):
+        texture_name(std::move(name)), pos(mVec3<int>{x, y, z}), size(size) {}
 
     /*Vector2 get_pos() const {
         return Vector2{static_cast<float>(pos.x), static_cast<float>(pos.y)};
     }*/
 
-    mVec2<int> get_pos_as_mvec() const {
+    mVec2<int> getPosAsMvec2() const {
         return mVec2<int>{pos.x, pos.y};
+    }
+
+    mVec2<int> getScreenPosAsMvec2() const {
+        return mVec2<int>{pos.x * size, pos.y * size};
     }
 
     /*Vector2 get_pos_size(Texture2D texture) const {

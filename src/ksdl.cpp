@@ -67,7 +67,7 @@ bool KSDL::init(int width, int height, std::string name) {
     }*/
 
     // Initialize SDL_ttf
-    if(TTF_Init() == -1) {
+    if(!TTF_Init()) {
         std::cout << "SDL_ttf could not initialize. SDL_ttf Error: " << SDL_GetError() << std::endl;
         return false;
     }
